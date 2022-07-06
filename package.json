@@ -1,0 +1,23 @@
+{
+  "name": "javascript-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/espoirndayishimiye4/Javascript-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/espoirndayishimiye4/Javascript-challenge/issues"
+  },
+  "homepage": "https://github.com/espoirndayishimiye4/Javascript-challenge#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

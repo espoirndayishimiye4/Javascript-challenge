@@ -26,20 +26,109 @@ function getData(id){
     },3000)
 }
 
-
+console.log('****************************')
 // we use a callback to get data object
-console.log('*********************************************');
-console.log('line1');
+console.log('before');
 
-getData(1,(da)=>{
-console.log('data', da)
+getUser(1, (user)=>{
+    console.log('user',user)
+    getRepository(user.name,(repos)=>{
+        console.log('repos',repos);
+    })
 })
 
-console.log('line3');
+console.log('after');
 
-function getData(id, callback){
-    setTimeout( ()=> {
-        console.log('line2 from database...');
-        callback({id: id,age:12})
+function getUser(id, callback){
+    setTimeout(()=>{
+        console.log('reading a user from database...');
+        callback({id: id,name:'Espoir'})
+       
     },3000)
 }
+function getRepository(username,callback){
+    setTimeout(() => {
+        callback(['repo1','repo2','repo3'])
+    }, 3000);
+    
+    
+}
+console.log('*****************************');
+
+
+
+
+
+console.log('****************************')
+// overcome callback hell
+console.log('before');
+
+getUser(1,users)
+
+console.log('after');
+
+function repo(repos){
+    console.log('repos',repos);
+}
+function users(user){
+    console.log('user',user)
+    getRepository(user.name,repo)
+}
+
+function getUser(id, callback){
+    setTimeout(()=>{
+        console.log('reading a user from database...');
+        callback({id: id,name:'Espoir'})
+       
+    },3000)
+}
+function getRepository(username,callback){
+    setTimeout(() => {
+        callback(['repo1','repo2','repo3'])
+    }, 3000);
+    
+    
+}
+console.log('*****************************');
+
+
+
+
+
+// replace callback with promises 
+console.log('before');
+
+getUser(1, (user)=>{
+    console.log('user',user)
+    getRepository(user.name,(repos)=>{
+        console.log('repos',repos);
+    })
+})
+
+const p = getUser(1)
+p.then(user => console.log(user))
+
+console.log('after');
+
+function getUser(id){
+    new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            console.log('reading a user from database...');
+            resolve({id: id,name:'Espoir'})
+           
+        },3000)
+    })
+    
+}
+function getRepository(username){
+    new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(['repo1','repo2','repo3'])
+        }, 3000)
+    })
+    
+    
+    
+}
+
+
